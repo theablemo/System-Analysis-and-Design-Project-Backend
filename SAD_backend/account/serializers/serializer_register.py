@@ -1,5 +1,4 @@
 from django.contrib.auth.hashers import make_password
-from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
 
 from account.models import Member
@@ -13,7 +12,6 @@ class RegisterSerializer(ModelSerializer):
         fields = ['password', 'first_name', 'last_name', 'gender', 'email']
 
     def validate(self, attrs):
-        print(attrs)
         attrs['first_name'] = parse_validate_name(attrs.get('first_name'), kind='first')
         attrs['last_name'] = parse_validate_name(attrs.get('last_name'), kind='last')
         attrs['password'] = make_password(attrs.get('password'))
