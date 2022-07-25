@@ -18,18 +18,18 @@
 							"formdata": [
 								{
 									"key": "username",
-									"value": "09123724095",
+									"value": "amirreza21@gmail.com",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "1234",
+									"value": "12345",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v2/login",
+							"raw": "http://127.0.0.1:8000/api/login",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -40,7 +40,6 @@
 							"port": "8000",
 							"path": [
 								"api",
-								"v2",
 								"login"
 							]
 						}
@@ -56,20 +55,34 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "data",
-									"value": "{\"phoneNumber\":\"09123724095\",\"firstName\":\"tomura\",\"lastName\":\"shigaraki\",\"gender\":\"male\",\"password\":\"1234\",\"birthDate\":221321,\"city\":\"تهران\"}",
+									"key": "email",
+									"value": "amirreza21@gmail.com",
 									"type": "text"
 								},
 								{
-									"key": "image",
-									"contentType": "",
-									"type": "file",
-									"src": "/Users/amirreza/Pictures/jTeI1N.jpg"
+									"key": "password",
+									"value": "12345",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "first_name",
+									"value": "amir",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "mirzaei",
+									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v2/register",
+							"raw": "http://127.0.0.1:8000/api/register",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -80,7 +93,6 @@
 							"port": "8000",
 							"path": [
 								"api",
-								"v2",
 								"register"
 							]
 						}
@@ -90,9 +102,66 @@
 				{
 					"name": "refresh-token",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
-						"url": null
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "refresh_token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY5MDEwOTExNCwianRpIjoiYjlkZjMwNjk4MWQ2NGJmNDk1N2ZmM2JkMTJmMDc3ZTQiLCJ1c2VyX2lkIjoyN30.q9JRya_7rNv6UihwRMQI4i1WcpJuo5hrX0_O4DKavEw",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/refresh-token",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"refresh-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check-username",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "amirreza2001@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/check-username",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"check-username"
+							]
+						}
 					},
 					"response": []
 				}
