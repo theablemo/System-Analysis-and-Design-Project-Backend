@@ -9,7 +9,7 @@ from base.utils.file_utils import content_file_path, attachment_file_path
 
 
 class ContentType(models.Model):
-    name = models.CharField()
+    name = models.CharField(max_length=20)
 
     @classmethod
     def get_default_type_pk(cls):
@@ -18,7 +18,7 @@ class ContentType(models.Model):
 
 
 class AttachmentType(models.Model):
-    name = models.CharField()
+    name = models.CharField(max_length=20)
     content_type = models.ManyToManyField(ContentType)
 
     @classmethod
@@ -28,7 +28,7 @@ class AttachmentType(models.Model):
 
 
 class Library(models.Model):
-    name = models.CharField()
+    name = models.CharField(max_length=20)
     type = models.ForeignKey(ContentType,
                              default=ContentType.get_default_type_pk,
                              on_delete=models.SET_DEFAULT)
@@ -36,7 +36,7 @@ class Library(models.Model):
 
 
 class Content(models.Model):
-    filename = models.CharField()
+    filename = models.CharField(max_length=20)
     member = models.ForeignKey(Member, on_delete=models.CASCADE)
     date_created = models.DateTimeField(verbose_name='date_created', default=datetime.fromtimestamp(0, tz=pytz.UTC))
     type = models.ForeignKey(ContentType,
@@ -51,7 +51,7 @@ class Content(models.Model):
 
 
 class Attachment(models.Model):
-    filename = models.CharField()
+    filename = models.CharField(max_length=100)
     member = models.ForeignKey(Member, on_delete=models.CASCADE)
     type = models.ForeignKey(AttachmentType,
                              default=AttachmentType.get_default_type_pk,
