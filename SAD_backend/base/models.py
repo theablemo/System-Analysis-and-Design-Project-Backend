@@ -1,3 +1,6 @@
+from datetime import datetime
+
+import pytz
 from django.db import models
 
 # Create your models here.
@@ -16,6 +19,7 @@ class ContentType(models.Model):
 
 class AttachmentType(models.Model):
     name = models.CharField()
+    content_type = models.ManyToManyField(ContentType)
 
     @classmethod
     def get_default_type_pk(cls):
@@ -28,13 +32,13 @@ class Library(models.Model):
     type = models.ForeignKey(ContentType,
                              default=ContentType.get_default_type_pk,
                              on_delete=models.SET_DEFAULT)
-    date_created = models.DateTimeField(verbose_name='date_created')
+    date_created = models.DateTimeField(verbose_name='date_created', default=datetime.fromtimestamp(0, tz=pytz.UTC))
 
 
 class Content(models.Model):
     filename = models.CharField()
     member = models.ForeignKey(Member, on_delete=models.CASCADE)
-    date_created = models.DateTimeField(verbose_name='date_created')
+    date_created = models.DateTimeField(verbose_name='date_created', default=datetime.fromtimestamp(0, tz=pytz.UTC))
     type = models.ForeignKey(ContentType,
                              default=ContentType.get_default_type_pk,
                              on_delete=models.SET_DEFAULT)
@@ -54,6 +58,7 @@ class Attachment(models.Model):
                              on_delete=models.SET_DEFAULT)
     content = models.ForeignKey(Content, on_delete=models.CASCADE)
     file = models.FileField(upload_to=attachment_file_path)
+    date_created = models.DateTimeField(verbose_name='date_created', default=datetime.fromtimestamp(0, tz=pytz.UTC))
 
     @property
     def path(self):
