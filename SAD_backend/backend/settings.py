@@ -87,8 +87,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'SAD_Project',
         'USER': 'postgres',
-        'PASSWORD': '1234',
-        'HOST': '0.0.0.0',
+        'PASSWORD': '92?VH2WMrx',
+        'HOST': '127.0.0.1',
         'PORT': '5432',
     },
 }
@@ -151,3 +151,16 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# redis
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
+
+# gmail smtp
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'alirezaeiji191379@gmail.com'
+EMAIL_HOST_PASSWORD = 'aqvootqbfziukjce'
