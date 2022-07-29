@@ -11,7 +11,7 @@ class VerifyView(APIView):
     permission_classes = [AllowAny]
 
     @swagger_auto_schema(request_body=VerifyAccountSerializer, responses={200: {}})
-    def post(self, request):
+    def put(self, request):
         serializer = VerifyAccountSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         email = serializer.validated_data['email']

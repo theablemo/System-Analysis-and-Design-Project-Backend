@@ -15,7 +15,7 @@ class ChangePasswordView(APIView):
     permission_classes = [IsAuthenticated]
 
     @swagger_auto_schema(request_body=ChangePasswordSerializer, responses={200: {}})
-    def post(self, request):
+    def put(self, request):
         serializer = ChangePasswordSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         old_password = serializer.validated_data['old_password']
