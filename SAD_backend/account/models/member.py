@@ -10,13 +10,9 @@ class GenderChoice(models.IntegerChoices):
 
 
 class Member(AbstractUser):
-    username = None
+    username = models.EmailField(verbose_name='email address', unique=True)
     gender = models.PositiveSmallIntegerField(verbose_name='gender', choices=GenderChoice.choices, null=True)
     last_seen = models.DateTimeField(verbose_name='last_seen', default=datetime.fromtimestamp(0, tz=pytz.UTC))
-    email = models.EmailField(verbose_name='email address', unique=True)
-
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
 
     def __repr__(self):
         return f"user#{self.id}"

@@ -493,6 +493,110 @@
 							"body": "{\n    \"exist\": true,\n    \"code\": \"OK\"\n}"
 						}
 					]
+				},
+				{
+					"name": "get user info",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjkwNjI4NjA2LCJqdGkiOiI0YjEwYWZjNjEzNDY0NWIxOTVkNTkzMGJiNjc2Yjc3YyIsInVzZXJfaWQiOjJ9.i9X-Pn1SS1tfKEYyU67cvDkFU4mGAbawhgCPSkT5I1I",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/get-info",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"get-info"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get user info",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-token",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjkwNjI4NjA2LCJqdGkiOiI0YjEwYWZjNjEzNDY0NWIxOTVkNTkzMGJiNjc2Yjc3YyIsInVzZXJfaWQiOjJ9.i9X-Pn1SS1tfKEYyU67cvDkFU4mGAbawhgCPSkT5I1I",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/get-info",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"get-info"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 29 Jul 2022 11:08:39 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.5"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "159"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"info\": {\n        \"username\": \"amirreza@gmail.com\",\n        \"first_name\": \"amir\",\n        \"last_name\": \"mirzaei\",\n        \"gender\": 1,\n        \"last_seen\": \"1970-01-01T00:00:00Z\",\n        \"is_staff\": false\n    },\n    \"code\": \"OK\"\n}"
+						}
+					]
 				}
 			]
 		}
