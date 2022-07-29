@@ -25,7 +25,7 @@ class ContentSerializer(serializers.Serializer):
         file = validated_data['file']
         content = Content.objects.create(
             filename=file.filename,
-            member=member.objec,
+            member=member.id,
             type=content_type,
             library=library,
             file=file
