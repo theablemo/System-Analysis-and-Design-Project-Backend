@@ -16,9 +16,17 @@ def send_register_email(email):
 
 
 def send_change_password_email(email, new_password):
-    print("email is " + str(email))
     send_mail(
         'password change',
+        f'the password is changed and new password is {new_password}',
+        settings.EMAIL_HOST_USER,
+        [email]
+    )
+
+
+def send_reset_password_email(email, new_password):
+    send_mail(
+        'password reset',
         f'the password is changed and new password is {new_password}',
         settings.EMAIL_HOST_USER,
         [email]
