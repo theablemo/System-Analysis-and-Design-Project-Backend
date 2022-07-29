@@ -1,4 +1,4 @@
-from rest_framework import serializers
+from rest_framework import serializers, status
 
 from account.models import Member
 from base.models import Library, ContentType, Content
@@ -12,7 +12,10 @@ class ContentSerializer(serializers.Serializer):
     library = serializers.CharField(source='library.name')
 
     def validate(self, data):
-        # TODO: Validate data
+        if not Library.objects.filter(name=data['library']).exists():
+            raise serializers.ValidationError(detail={"message": "Library not found"}, code=status.HTTP_404_NOT_FOUND)
+        if not ContentType.objects.filter(name=data['type']).exists():
+            raise serializers.ValidationError(detail={"message": "Type not found"}, code=status.HTTP_404_NOT_FOUND)
         return data
 
     def create(self, validated_data):
@@ -24,10 +27,13 @@ class ContentSerializer(serializers.Serializer):
             filename=file.filename,
             member=member.objec,
             type=content_type,
-            library=library
+            library=library,
+            file=file
         )
         return content
 
     def update(self, instance, validated_data):
-        # TODO: Complete update method
-        pass
+        if 'library' in validated_data:
+            instance.library = Library.objects.get(name=validated_data['library'])
+        instance.save()
+        return instance
