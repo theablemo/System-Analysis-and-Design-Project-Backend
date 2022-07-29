@@ -1,1 +1,2 @@
 from .serializer_register import RegisterSerializer
+from .serializer_member_info import MemberInfoSerializer
