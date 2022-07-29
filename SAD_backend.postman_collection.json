@@ -44,7 +44,88 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "username",
+											"value": "amirreza@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "12345",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/login",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 29 Jul 2022 10:33:36 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.5"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "488"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": {\n        \"refreshToken\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY5MDYyNjgxNiwianRpIjoiYTJmNzQ0ZjkxYjhlNDhkOGFlODUwNGY3MDFiZDMxMjUiLCJ1c2VyX2lkIjo5fQ.PGdOih9koA4ldIRPJ5RFozBKNqQDlIi_ihLnyZBmcvk\",\n        \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjkwNjI2ODE2LCJqdGkiOiJjNTU4MDhmZDk3MGU0YWJmOWM4ZWZiMWJmZTBlNjI1YyIsInVzZXJfaWQiOjl9.K8uyO8T1eFmMOvq2nhxde2UamRH0dH04JOlT_Px9L64\",\n        \"validUntil\": 1690626816\n    },\n    \"code\": \"OK\"\n}"
+						}
+					]
 				},
 				{
 					"name": "register",
@@ -56,7 +137,7 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "amirreza21@gmail.com",
+									"value": "amirreza@gmail.com",
 									"type": "text"
 								},
 								{
@@ -97,7 +178,103 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "amirreza@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "12345",
+											"type": "text"
+										},
+										{
+											"key": "gender",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "first_name",
+											"value": "amir",
+											"type": "text"
+										},
+										{
+											"key": "last_name",
+											"value": "mirzaei",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/register",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 29 Jul 2022 10:33:07 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.5"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "488"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": {\n        \"refreshToken\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY5MDYyNjc4NywianRpIjoiOWYwOWQ1OTQxZGU4NDlmNmJiYTlkOWM3Y2Y2NGU0ODQiLCJ1c2VyX2lkIjo5fQ.9fNxUWxP__n1IbAobjDAck-PcPfFxm869elp_BrFkzw\",\n        \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjkwNjI2Nzg3LCJqdGkiOiI3YzQ4YjEyNDVlZmE0M2E0YTk3MWRkOTE3OWVhMTI1MiIsInVzZXJfaWQiOjl9.hKjYLvzrmwqYgdY5guG0UFBr0FG9-rGOD0mCT2m_0tg\",\n        \"validUntil\": 1690626787\n    },\n    \"code\": \"OK\"\n}"
+						}
+					]
 				},
 				{
 					"name": "refresh-token",
@@ -130,7 +307,83 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "refresh-token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "refresh_token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY5MDYyNjgxNiwianRpIjoiYTJmNzQ0ZjkxYjhlNDhkOGFlODUwNGY3MDFiZDMxMjUiLCJ1c2VyX2lkIjo5fQ.PGdOih9koA4ldIRPJ5RFozBKNqQDlIi_ihLnyZBmcvk",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/refresh-token",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"refresh-token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 29 Jul 2022 10:33:53 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.5"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "491"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": {\n        \"refreshToken\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY5MDYyNjgxNiwianRpIjoiYTJmNzQ0ZjkxYjhlNDhkOGFlODUwNGY3MDFiZDMxMjUiLCJ1c2VyX2lkIjo5fQ.PGdOih9koA4ldIRPJ5RFozBKNqQDlIi_ihLnyZBmcvk\",\n        \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjkwNjI2ODMzLCJqdGkiOiJlODk1NDAxMTgyYTA0ODFjODk0ZjMxYmU1YTBlNDFkOCIsInVzZXJfaWQiOjl9.XLsezMP-_kwgl2qe1sPozkrLnncG-D-wmKQMY1PyVyY\",\n        \"validUntil\": 1690626833000\n    },\n    \"code\": \"OK\"\n}"
+						}
+					]
 				},
 				{
 					"name": "check-username",
@@ -163,7 +416,83 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "check-username",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "username",
+											"value": "amirreza2001@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/check-username",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"check-username"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 29 Jul 2022 10:33:59 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.5"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "26"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"exist\": true,\n    \"code\": \"OK\"\n}"
+						}
+					]
 				}
 			]
 		}
