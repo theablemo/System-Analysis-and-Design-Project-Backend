@@ -10,9 +10,6 @@ def send_register_email(email):
     send_mail(
         'registration code',
         f'the verification code is {code} and is valid for 15 mins',
-        "alirezeiji191379@gmail.com",
-        [email],
-        False,
-        settings.FROM,
-        settings.PASS
+        settings.EMAIL_HOST_USER,
+        [email]
     )
