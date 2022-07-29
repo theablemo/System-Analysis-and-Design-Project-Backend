@@ -153,6 +153,10 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # redis
-
 REDIS_HOST = 'localhost'
 REDIS_PORT = 6379
+
+# gmail smtp
+
+FROM = 'alirezaeiji191379@gmail.com'
+PASS = 'aqvootqbfziukjce'
