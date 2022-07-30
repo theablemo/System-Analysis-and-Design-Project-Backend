@@ -24,7 +24,7 @@ class VerifyView(APIView):
             return Response(status=400, data={"message": "the verification code is not correct"})
 
         try:
-            Member.objects.filter(username=email).update(is_active=True)
+            Member.objects.filter(username=email).update(verified=True)
             return Response(status=200, data={"message": "updated successfully!"})
         except:
             return Response(status=404, data={"message": "user not found"})

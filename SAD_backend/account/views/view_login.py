@@ -20,4 +20,5 @@ class LoginView(APIView):
         token = get_token_for_user(user)
         return Response({
             "token": token,
+            "verified": user.verified,
             "code": "OK"})

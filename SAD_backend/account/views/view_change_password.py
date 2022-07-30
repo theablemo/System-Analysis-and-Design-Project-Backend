@@ -24,9 +24,7 @@ class ChangePasswordView(APIView):
         if old_password == new_password:
             return Response(status=400, data={"message": "new password and old password can not be same"}, exception=True)
 
-        access_token = request.headers['X-token']
-        user_id = jwt.decode(access_token, settings.SECRET_KEY,
-                             settings.SIMPLE_JWT['ALGORITHM']).get('user_id')
+        user_id = request.user.id
 
         try:
             username = Member.objects.filter(
