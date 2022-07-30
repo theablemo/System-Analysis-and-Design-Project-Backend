@@ -19,4 +19,4 @@ class Member(AbstractUser):
         return f"user#{self.id}"
 
     def __str__(self):
-        return self.email
+        return self.username
