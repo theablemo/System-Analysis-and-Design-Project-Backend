@@ -5,3 +5,5 @@ djangorestframework==3.12.4
 djangorestframework-camel-case==1.2.0
 djangorestframework-simplejwt==4.7.1
 phonenumbers
+pyyaml
+uritemplate

@@ -1,3 +1,4 @@
+from drf_yasg.utils import swagger_auto_schema
 from rest_framework.response import Response
 from rest_framework_simplejwt.exceptions import TokenError
 from rest_framework_simplejwt.serializers import TokenRefreshSerializer
@@ -11,6 +12,7 @@ from backend.exception_handler import ApiException
 class MyTokenRefreshView(TokenRefreshView):
     serializer_class = TokenRefreshSerializer
 
+    @swagger_auto_schema(request_body=MyRefreshTokenSerializer, responses={200: {}})
     def post(self, request, *args, **kwargs):
         serializer = MyRefreshTokenSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -25,4 +27,4 @@ class MyTokenRefreshView(TokenRefreshView):
         return Response({
             "token": token_to_json(token, refresh),
             "code": "OK"
-        }, status=200)
+        })
