@@ -152,6 +152,8 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+CONTENTS_DIR = 'contents/'
+
 # redis
 REDIS_HOST = 'localhost'
 REDIS_PORT = 6379
