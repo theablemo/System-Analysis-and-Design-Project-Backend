@@ -7,3 +7,6 @@ djangorestframework-simplejwt==4.7.1
 phonenumbers
 pyyaml
 uritemplate
+redis
+drf_yasg
+psycopg2

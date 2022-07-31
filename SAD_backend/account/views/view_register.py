@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from account.serializers import RegisterSerializer
 from account.util.token_generator import get_token_for_user
+from account.util.email_handler import send_register_email
 
 
 class RegisterView(APIView):
@@ -12,8 +13,7 @@ class RegisterView(APIView):
         serializer = RegisterSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.create(serializer.validated_data)
-
+        send_register_email(user.username)
         return Response({
-             "token": get_token_for_user(user),
-             "code": "OK"})
-
+            "token": get_token_for_user(user),
+            "code": "OK"})
