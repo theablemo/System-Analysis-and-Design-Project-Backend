@@ -48,12 +48,14 @@ class ContentViewTest(TestCase):
         self.content_type = ContentType.objects.create(name='text')
         self.filename = 'test.txt'
         self.file = SimpleUploadedFile(self.filename, b'Sample Content.')
-        self.member = Member(email='m@s.com')
+        self.member = Member(username='m@s.com')
         self.member.set_password('1234')
         self.member.save()
-        self.client.login(email='m@s.com', password='1234')
+
+        self.client.login(username='m@s.com', password='1234')
 
     def test_upload_view(self):
+        # TODO: User is not Authenticated
         data = {
             'library': self.library.name,
             'type': self.content_type.name,
