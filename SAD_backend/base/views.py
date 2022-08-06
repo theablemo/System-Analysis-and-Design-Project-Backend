@@ -42,3 +42,11 @@ class ContentView(APIView):
                 return response
         except:
             return Response({'message': 'Content not found'}, status=status.HTTP_404_NOT_FOUND)
+
+
+class ContentListView(APIView):
+    def get(self, request):
+        user_id = request.user.pk
+        contents = Content.objects.filter(member__id=user_id)
+        serializer = ContentSerializer(contents, many=True)
+        return Response(data=serializer.data, status=status.HTTP_200_OK)

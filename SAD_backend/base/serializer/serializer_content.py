@@ -9,9 +9,9 @@ from base.models import Library, ContentType, Content
 
 class ContentSerializer(serializers.Serializer):
     filename = serializers.CharField()
-    id = serializers.CharField(source='member.id')
+    member_id = serializers.CharField(source='member.id')
     date_created = serializers.DateTimeField(default=datetime.fromtimestamp(0, tz=pytz.UTC))
-    type = serializers.CharField(source='contenttype.name')
+    type = serializers.CharField(source='type.name')
     library = serializers.CharField(source='library.name')
     file = serializers.FileField()
 
