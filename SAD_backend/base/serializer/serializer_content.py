@@ -18,14 +18,14 @@ class ContentSerializer(serializers.Serializer):
     def validate(self, data):
         if not Library.objects.filter(name=data['library']['name']).exists():
             raise serializers.ValidationError(detail={"message": "Library not found"}, code=status.HTTP_404_NOT_FOUND)
-        if not ContentType.objects.filter(name=data['contenttype']['name']).exists():
+        if not ContentType.objects.filter(name=data['type']['name']).exists():
             raise serializers.ValidationError(detail={"message": "Type not found"}, code=status.HTTP_404_NOT_FOUND)
         return data
 
     def create(self, validated_data):
         member = Member.objects.get(pk=validated_data['member']['id'])
         library = Library.objects.get(name=validated_data['library']['name'])
-        content_type = ContentType.objects.get(name=validated_data['contenttype']['name'])
+        content_type = ContentType.objects.get(name=validated_data['type']['name'])
         file = validated_data['file']
         content = Content.objects.create(
             filename=file.name,
