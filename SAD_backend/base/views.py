@@ -6,6 +6,7 @@ from django.shortcuts import render
 # Create your views here.
 from rest_framework import status
 from rest_framework.parsers import MultiPartParser, FileUploadParser
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -15,6 +16,7 @@ from base.serializer.serializer_content import ContentSerializer
 
 class ContentView(APIView):
     parser_classes = (MultiPartParser, FileUploadParser,)
+    permission_classes = (IsAuthenticated,)
 
     def post(self, request):
         data = {'id': request.user.pk,
@@ -45,6 +47,8 @@ class ContentView(APIView):
 
 
 class ContentListView(APIView):
+    permission_classes = (IsAuthenticated,)
+
     def get(self, request):
         user_id = request.user.pk
         contents = Content.objects.filter(member__id=user_id)
