@@ -51,8 +51,8 @@ class ContentViewTest(TestCase):
         self.member = Member(username='m@s.com')
         self.member.set_password('1234')
         self.member.save()
-
-        self.client.login(username='m@s.com', password='1234')
+        resp = self.client.post('/api/login', {'username': 'm@s.com', 'password': '1234'}).json()
+        self.token = resp['token']['token']
 
     def test_upload_view(self):
         # TODO: User is not Authenticated
@@ -61,7 +61,7 @@ class ContentViewTest(TestCase):
             'type': self.content_type.name,
             'file': self.file,
         }
-        response = self.client.post('/api/content/new/', data=data)
+        response = self.client.post('/api/content/new/', data=data, HTTP_X_TOKEN=self.token)
         self.assertEqual(response.status_code, 200)
         content_count = Content.objects.filter(filename=self.filename).count()
         self.assertEqual(content_count, 1)

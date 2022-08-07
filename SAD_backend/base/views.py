@@ -16,10 +16,10 @@ from base.serializer.serializer_content import ContentSerializer
 
 class ContentView(APIView):
     parser_classes = (MultiPartParser, FileUploadParser,)
-    # permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
 
     def post(self, request):
-        data = {'member_id': 1,
+        data = {'member_id': request.user.pk,
                 'filename': request.data['file'].name,
                 'library': request.data['library'],
                 'type': request.data['type'],
