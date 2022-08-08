@@ -5,7 +5,7 @@ from django.db import models
 
 # Create your models here.
 from account.models import Member
-from base.utils.file_utils import content_file_path, attachment_file_path
+from content.utils.file_utils import content_file_path, attachment_file_path
 
 
 class ContentType(models.Model):

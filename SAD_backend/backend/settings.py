@@ -45,7 +45,7 @@ INSTALLED_APPS = [
 
     # apps
     'account.apps.AccountConfig',
-    'base.apps.BaseConfig',
+    'content.apps.ContentConfig',
 ]
 
 MIDDLEWARE = [
@@ -166,3 +166,10 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'alirezaeiji191379@gmail.com'
 EMAIL_HOST_PASSWORD = 'aqvootqbfziukjce'
+
+# celery setting
+
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 10 * 60
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'

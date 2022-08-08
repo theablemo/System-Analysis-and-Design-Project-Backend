@@ -7,6 +7,10 @@ djangorestframework-simplejwt==4.7.1
 phonenumbers
 pyyaml
 uritemplate
-redis
+redis~=4.3.4
 drf_yasg
 psycopg2
+django-celery-results
+PyJWT~=2.1.0
+pytz~=2022.1
+celery~=5.2.7

@@ -6,7 +6,7 @@ from rest_framework.parsers import MultiPartParser, FileUploadParser
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from base.serializer.serializer_content import ContentSerializer
+from content.serializer.serializer_content import ContentSerializer
 
 
 class ContentView(APIView):
