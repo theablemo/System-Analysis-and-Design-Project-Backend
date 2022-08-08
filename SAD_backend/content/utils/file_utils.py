@@ -1,5 +1,5 @@
 from backend.settings import CONTENTS_DIR
-
+import random
 
 def get_raw_file_name(file_name):
     # Separate the file name from its extension
@@ -7,4 +7,4 @@ def get_raw_file_name(file_name):
 
 
 def content_file_path(content, file_name):
-    return f'{CONTENTS_DIR}{content.member.id}_{content.library.name}_{get_raw_file_name(file_name)}_{file_name}'
+    return f'{CONTENTS_DIR}{content.member.id}_{random.randint(1,99999)}_{file_name}'
