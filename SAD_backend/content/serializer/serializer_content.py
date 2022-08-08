@@ -1,38 +1,44 @@
 from datetime import datetime
-
-import pytz
 from rest_framework import serializers, status
-
-from account.models import Member
+from rest_framework.serializers import ModelSerializer
 from content.models.content import ContentType, Content, Library
 
 
-class ContentSerializer(serializers.Serializer):
-    filename = serializers.CharField()
-    id = serializers.CharField(source='member.id')
-    date_created = serializers.DateTimeField(default=datetime.fromtimestamp(0, tz=pytz.UTC))
-    type = serializers.CharField(source='contenttype.name')
-    library = serializers.CharField(source='library.name')
-    file = serializers.FileField()
+class ContentSerializer(ModelSerializer):
+    class Meta:
+        model = Content
+        fields = ['file', 'father_content', 'library']
 
     def validate(self, data):
-        if not Library.objects.filter(name=data['library']['name']).exists():
-            raise serializers.ValidationError(detail={"message": "Library not found"}, code=status.HTTP_404_NOT_FOUND)
-        if not ContentType.objects.filter(name=data['contenttype']['name']).exists():
-            raise serializers.ValidationError(detail={"message": "Type not found"}, code=status.HTTP_404_NOT_FOUND)
+        super(ContentSerializer, self).validate(data)
+        type_name = data['file'].name.split('.')[-1]
+        if not ContentType.objects.get(name=type_name):
+            raise serializers.ValidationError(detail={"message": "Content type not found"},
+                                              code=status.HTTP_404_NOT_FOUND)
+
+        if 'father_content' in data:
+            if not data['father_content'].type.is_compatible_as_attachment(type_name):
+                raise serializers.ValidationError(
+                    detail={"message": "attachment type not compatible with father content"},
+                    code=status.HTTP_400_BAD_REQUEST)
+            if 'library' in data and data['library'] != data['father_content'].library:
+                raise serializers.ValidationError(
+                    detail={"message": "attachment should be in the same library as father content"},
+                    code=status.HTTP_400_BAD_REQUEST)
+
         return data
 
     def create(self, validated_data):
-        member = Member.objects.get(pk=validated_data['member']['id'])
-        library = Library.objects.get(name=validated_data['library']['name'])
-        content_type = ContentType.objects.get(name=validated_data['contenttype']['name'])
-        file = validated_data['file']
+        type_name = validated_data['file'].name.split('.')[-1]
+        content_type = ContentType.objects.get(name=type_name)
+
         content = Content.objects.create(
-            filename=file.name,
-            member=member,
+            member=self.context.get("request").user,
             type=content_type,
-            library=library,
-            file=file
+            library=validated_data.get('library'),
+            file=validated_data['file'],
+            father_content=validated_data.get('father_content'),
+            date_created=datetime.now()
         )
         return content
 
