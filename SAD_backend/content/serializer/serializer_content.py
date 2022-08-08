@@ -4,7 +4,7 @@ import pytz
 from rest_framework import serializers, status
 
 from account.models import Member
-from content.models import Library, ContentType, Content
+from content.models.content import ContentType, Content, Library
 
 
 class ContentSerializer(serializers.Serializer):
