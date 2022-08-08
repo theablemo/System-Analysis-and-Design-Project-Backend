@@ -2,6 +2,7 @@ from rest_framework import status
 from rest_framework.parsers import MultiPartParser, FileUploadParser
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.permissions import AllowAny
 
 from content.serializer.serializer_content import ContentSerializer
 
@@ -19,4 +20,3 @@ class ContentView(APIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response({'message': 'Content created successfully.'}, status=status.HTTP_200_OK)
-
