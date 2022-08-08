@@ -2,9 +2,7 @@ name: build_Sad_project
 
 on:
   push:
-    branches:    
-      - master
-      - feature/*
+    branches: 
       - '**'
   pull_request:
     branches: [ "master" ]
