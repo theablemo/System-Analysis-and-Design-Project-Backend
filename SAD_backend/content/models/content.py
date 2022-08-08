@@ -7,7 +7,8 @@ from content.utils.file_utils import content_file_path
 
 
 class ContentType(models.Model):
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=50)
+    type = models.CharField(max_length=50)
 
     @classmethod
     def get_default_type_pk(cls):
