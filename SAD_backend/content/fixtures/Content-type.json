@@ -1,0 +1,442 @@
+[
+ {
+  "model": "content.ContentType",
+  "pk": 0,
+  "fields": {
+   "name": "mp4",
+   "type": "video"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 1,
+  "fields": {
+   "name": "mkv",
+   "type": "video"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 2,
+  "fields": {
+   "name": "vob",
+   "type": "video"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 3,
+  "fields": {
+   "name": "wmv",
+   "type": "video"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 4,
+  "fields": {
+   "name": "ogg",
+   "type": "video"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 5,
+  "fields": {
+   "name": "srt",
+   "type": "video-attachment"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 6,
+  "fields": {
+   "name": "ssa",
+   "type": "video-attachment"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 7,
+  "fields": {
+   "name": "gif",
+   "type": "image"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 8,
+  "fields": {
+   "name": "jpeg",
+   "type": "image"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 9,
+  "fields": {
+   "name": "jpg",
+   "type": "image"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 10,
+  "fields": {
+   "name": "png",
+   "type": "image"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 11,
+  "fields": {
+   "name": "m4a",
+   "type": "audio"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 12,
+  "fields": {
+   "name": "mp3",
+   "type": "audio"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 13,
+  "fields": {
+   "name": "wav",
+   "type": "audio"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 14,
+  "fields": {
+   "name": "aif",
+   "type": "audio"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 15,
+  "fields": {
+   "name": "midi",
+   "type": "audio"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 16,
+  "fields": {
+   "name": "csv",
+   "type": "document"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 17,
+  "fields": {
+   "name": "doc",
+   "type": "document"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 18,
+  "fields": {
+   "name": "docx",
+   "type": "document"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 19,
+  "fields": {
+   "name": "pptx",
+   "type": "document"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 20,
+  "fields": {
+   "name": "rtf",
+   "type": "document"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 21,
+  "fields": {
+   "name": "txt",
+   "type": "document"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 22,
+  "fields": {
+   "name": "tif",
+   "type": "document"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 23,
+  "fields": {
+   "name": "xlsx",
+   "type": "document"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 24,
+  "fields": {
+   "name": "tex",
+   "type": "document"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 25,
+  "fields": {
+   "name": "pdf",
+   "type": "document"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 26,
+  "fields": {
+   "name": "fnt",
+   "type": "document-attachment"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 27,
+  "fields": {
+   "name": "ttf",
+   "type": "document-attachment"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 28,
+  "fields": {
+   "name": "xla",
+   "type": "document-attachment"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 29,
+  "fields": {
+   "name": "xll",
+   "type": "document-attachment"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 30,
+  "fields": {
+   "name": "html",
+   "type": "program"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 31,
+  "fields": {
+   "name": "c",
+   "type": "program"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 32,
+  "fields": {
+   "name": "py",
+   "type": "program"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 33,
+  "fields": {
+   "name": "class",
+   "type": "program"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 34,
+  "fields": {
+   "name": "php",
+   "type": "program"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 35,
+  "fields": {
+   "name": "java",
+   "type": "program"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 36,
+  "fields": {
+   "name": "cs",
+   "type": "program"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 37,
+  "fields": {
+   "name": "sql",
+   "type": "program"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 38,
+  "fields": {
+   "name": "xml",
+   "type": "program"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 39,
+  "fields": {
+   "name": "js",
+   "type": "program"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 40,
+  "fields": {
+   "name": "cpp",
+   "type": "program"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 41,
+  "fields": {
+   "name": "h",
+   "type": "program"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 42,
+  "fields": {
+   "name": "sh",
+   "type": "program"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 43,
+  "fields": {
+   "name": "yml",
+   "type": "program-attachment"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 44,
+  "fields": {
+   "name": "tmp",
+   "type": "program-attachment"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 45,
+  "fields": {
+   "name": "log",
+   "type": "program-attachment"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 46,
+  "fields": {
+   "name": "exe",
+   "type": "executable"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 47,
+  "fields": {
+   "name": "apk",
+   "type": "executable"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 48,
+  "fields": {
+   "name": "bat",
+   "type": "executable"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 49,
+  "fields": {
+   "name": "jar",
+   "type": "executable"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 50,
+  "fields": {
+   "name": "bin",
+   "type": "executable"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 51,
+  "fields": {
+   "name": "zip",
+   "type": "executable-attachment"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 52,
+  "fields": {
+   "name": "rar",
+   "type": "executable-attachment"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 53,
+  "fields": {
+   "name": "tar",
+   "type": "executable-attachment"
+  }
+ },
+ {
+  "model": "content.ContentType",
+  "pk": 54,
+  "fields": {
+   "name": "other",
+   "type": "other-type"
+  }
+ }
+]
