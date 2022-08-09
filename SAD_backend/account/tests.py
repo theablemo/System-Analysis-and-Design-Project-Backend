@@ -99,7 +99,7 @@ class AuthorizationTest(ApiV2BaseTests):
             'password': '12345'
         })
 
-        self.check_error(r)
+        self.check_error(r, status_code=401)
         r = json.loads(r.content)
         self.assertNotIn('token', r)
 
@@ -113,7 +113,7 @@ class AuthorizationTest(ApiV2BaseTests):
             'password': '123452132413'
         })
 
-        self.check_error(r)
+        self.check_error(r, status_code=401)
         r = json.loads(r.content)
         self.assertNotIn('token', r)
 
