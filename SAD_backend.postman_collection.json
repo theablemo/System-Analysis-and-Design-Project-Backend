@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "f4ae1db8-423a-4c84-ac63-488f833a8994",
+		"_postman_id": "941b6cb7-e556-4e57-aa57-ba0f7d2af858",
 		"name": "SAD_backend",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14312871"
 	},
 	"item": [
 		{
@@ -638,16 +639,6 @@
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "username",
-											"value": "amirreza2001@gmail.com",
-											"type": "text"
-										}
-									]
-								},
 								"url": {
 									"raw": "http://127.0.0.1:8000/api/verify-account",
 									"protocol": "http",
@@ -715,7 +706,9 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": null
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": [
 						{
@@ -1062,6 +1055,393 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"info\": {\n        \"id\": 17,\n        \"date_created\": \"2022-08-08T14:29:46.034026Z\",\n        \"file\": \"http://127.0.0.1:8000/contents/3_62836_test.fnt\",\n        \"member\": 3,\n        \"type\": 26,\n        \"library\": null,\n        \"father_content\": 16\n    },\n    \"code\": \"OK\"\n}"
+						}
+					]
+				},
+				{
+					"name": "add library",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"ali loves api1\",\r\n    \"date_created\" : \"2022-08-08 18:38:44\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/library/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"library",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "add library",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"ali loves api1\",\r\n    \"date_created\" : \"2022-08-08 18:38:44\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/library/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"library",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 08 Aug 2022 18:14:08 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.5"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "17"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"library_id\": 15\n}"
+						}
+					]
+				},
+				{
+					"name": "get libraries",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/library/?offset=5&limit=5",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"library",
+								""
+							],
+							"query": [
+								{
+									"key": "offset",
+									"value": "5"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get libraries",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/library/?offset=0&limit=5",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"library",
+										""
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "limit",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 08 Aug 2022 18:14:28 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.5"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "338"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 3,\n        \"name\": \"asdf\",\n        \"date_created\": \"2022-08-08T18:38:44Z\"\n    },\n    {\n        \"id\": 4,\n        \"name\": \"alireza eiji\",\n        \"date_created\": \"2022-08-08T18:38:44Z\"\n    },\n    {\n        \"id\": 5,\n        \"name\": \"alireza eiji reza\",\n        \"date_created\": \"2022-08-08T18:38:44Z\"\n    },\n    {\n        \"id\": 6,\n        \"name\": \"amirreza\",\n        \"date_created\": \"2022-08-08T18:38:44Z\"\n    },\n    {\n        \"id\": 7,\n        \"name\": \"amirreza123\",\n        \"date_created\": \"2022-08-08T18:38:44Z\"\n    }\n]"
+						},
+						{
+							"name": "get libraries2",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/library/?offset=5&limit=5",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"library",
+										""
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "5"
+										},
+										{
+											"key": "limit",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 08 Aug 2022 18:14:54 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.5"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "312"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 8,\n        \"name\": \"mhasd\",\n        \"date_created\": \"2022-08-08T18:38:44Z\"\n    },\n    {\n        \"id\": 9,\n        \"name\": \"mhasd\",\n        \"date_created\": \"2022-08-08T18:38:44Z\"\n    },\n    {\n        \"id\": 10,\n        \"name\": \"mhasd\",\n        \"date_created\": \"2022-08-08T18:38:44Z\"\n    },\n    {\n        \"id\": 11,\n        \"name\": \"asfg\",\n        \"date_created\": \"2022-08-08T18:38:44Z\"\n    },\n    {\n        \"id\": 12,\n        \"name\": \"asfg\",\n        \"date_created\": \"2022-08-08T18:38:44Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "get one library",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/library/14",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"library",
+								"14"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get one library",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/library/14",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"library",
+										"14"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 08 Aug 2022 18:15:12 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.5"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "70"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 14,\n    \"name\": \"ali loves api\",\n    \"date_created\": \"2022-08-08T18:38:44Z\"\n}"
 						}
 					]
 				}

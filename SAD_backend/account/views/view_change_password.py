@@ -1,20 +1,18 @@
 from django.contrib.auth import authenticate
 from django.contrib.auth.hashers import make_password
 from rest_framework.views import APIView
-from drf_yasg.utils import swagger_auto_schema
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from account.models.member import Member
 from account.serializers.serializer_change_password import ChangePasswordSerializer
 from backend import settings
-import jwt
 from account.util.email_handler import send_change_password_email
 
 
 class ChangePasswordView(APIView):
     permission_classes = [IsAuthenticated]
 
-    @swagger_auto_schema(request_body=ChangePasswordSerializer, responses={200: {}})
+    # @swagger_auto_schema(request_body=ChangePasswordSerializer, responses={200: {}})
     def put(self, request):
         serializer = ChangePasswordSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
