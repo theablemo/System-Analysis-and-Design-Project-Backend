@@ -13,3 +13,9 @@ def get_token_for_user(user):
     data['validUntil'] = jwt.decode(data['token'], settings.SECRET_KEY, settings.SIMPLE_JWT['ALGORITHM']).get('exp')
     return data
 
+def token_to_json(access_token, refresh_token):
+    valid_until = jwt.decode(access_token, settings.SECRET_KEY, settings.SIMPLE_JWT['ALGORITHM']).get('exp')
+    return {
+        "refreshToken": refresh_token,
+        "token": access_token,
+        "validUntil": valid_until * 1000}

@@ -2,7 +2,7 @@ from django.contrib.auth.hashers import make_password
 from rest_framework.serializers import ModelSerializer
 
 from account.models import Member
-from base.serializer.parse_validate import parse_validate_name
+from content.serializer.parse_validate import parse_validate_name
 
 
 class RegisterSerializer(ModelSerializer):

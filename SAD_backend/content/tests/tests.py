@@ -6,7 +6,7 @@ from django.test import TestCase
 # Create your tests here.
 from account.models import Member
 from backend.settings import CONTENTS_DIR
-from base.models import Library, ContentType, Content
+from content.models import Library, ContentType, Content
 
 
 class ContentModelTests(TestCase):

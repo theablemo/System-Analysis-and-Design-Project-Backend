@@ -4,7 +4,6 @@ from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
 from account.util.email_handler import send_change_password_email
 from account.models.member import Member
-from account.util.email_handler import send_reset_password_email
 from account.serializers.serializer_reset_password import ResetPasswordSerializer
 from account.util.password_generator import generate_random_password
 from django.contrib.auth.hashers import make_password

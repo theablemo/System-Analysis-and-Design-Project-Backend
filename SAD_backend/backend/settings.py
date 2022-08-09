@@ -45,7 +45,7 @@ INSTALLED_APPS = [
 
     # apps
     'account.apps.AccountConfig',
-    'base.apps.BaseConfig',
+    'content.apps.ContentConfig',
 ]
 
 MIDDLEWARE = [
@@ -126,7 +126,9 @@ SIMPLE_JWT = {
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'backend.authentication.CustomJWTAuthentication',
-    ]
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
 }
 
 
@@ -166,3 +168,10 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'alirezaeiji191379@gmail.com'
 EMAIL_HOST_PASSWORD = 'aqvootqbfziukjce'
+
+# celery setting
+
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 10 * 60
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
