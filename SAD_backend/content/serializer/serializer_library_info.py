@@ -2,11 +2,7 @@ from rest_framework import serializers
 from content.models.content import Library
 
 
-
-class LibrarySerializer(serializers.ModelSerializer):
+class LibraryInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Library
-        fields = ['id', 'name', 'date_created']
-
-
-
+        fields = '__all__'

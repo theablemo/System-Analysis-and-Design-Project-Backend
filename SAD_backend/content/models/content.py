@@ -20,8 +20,12 @@ class ContentType(models.Model):
 
 
 class Library(models.Model):
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=50)
     date_created = models.DateTimeField(verbose_name='date_created', default=datetime.fromtimestamp(0, tz=pytz.UTC))
+    member = models.ForeignKey(Member, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ('name', 'member',)
 
 
 class Content(models.Model):

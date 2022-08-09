@@ -1,18 +1,9 @@
 from django.urls import path
-from rest_framework.routers import DefaultRouter
-from content.views import ContentView
-from content.views.library_views import *
-
-# router = DefaultRouter()
-
-# router.register("library",LibraryViewSet,"library_vs")
-
+from content.views import ContentView, LibraryView, AddContentToLibraryView, GetLibraryFiles
 
 urlpatterns = [
-    path('content/new/', ContentView.as_view(), name="new_content"),
-    path('library/', LibraryView.as_view(),name="library_views"),
-    path('library/<int:id>/',LibraryDetailView.as_view(),name= "library_detail")
+    path('content/', ContentView.as_view(), name="view content"),
+    path('library/', LibraryView.as_view(), name="view library"),
+    path('add-content-to-library/', AddContentToLibraryView.as_view(), name="add content to library"),
+    path('get-library-files/', GetLibraryFiles.as_view(), name="get library files"),
 ]
-
-
-# urlpatterns += router.urls
