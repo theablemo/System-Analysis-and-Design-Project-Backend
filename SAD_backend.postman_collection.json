@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "f4ae1db8-423a-4c84-ac63-488f833a8994",
+		"_postman_id": "e9a1e58e-289e-441e-9306-89b92d6ae414",
 		"name": "SAD_backend",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -638,16 +638,6 @@
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "username",
-											"value": "amirreza2001@gmail.com",
-											"type": "text"
-										}
-									]
-								},
 								"url": {
 									"raw": "http://127.0.0.1:8000/api/verify-account",
 									"protocol": "http",
@@ -715,7 +705,9 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": null
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": [
 						{
@@ -1475,16 +1467,6 @@
 										"type": "text"
 									}
 								],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "library_name",
-											"value": "lib1",
-											"type": "text"
-										}
-									]
-								},
 								"url": {
 									"raw": "http://127.0.0.1:8000/api/get-library-files/",
 									"protocol": "http",
@@ -1545,6 +1527,217 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"info\": [\n        {\n            \"id\": 4,\n            \"date_created\": \"2022-08-08T13:56:02.997637Z\",\n            \"file\": \"http://127.0.0.1:8000/contents/3_cnFKQxGv4b_cnFKQxGv4b.jpg\",\n            \"member\": 3,\n            \"type\": 9,\n            \"library\": 1,\n            \"father_content\": null\n        }\n    ],\n    \"code\": \"OK\"\n}"
+						}
+					]
+				},
+				{
+					"name": "download",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-token",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/download/:library/:filename",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"download",
+								":library",
+								":filename"
+							],
+							"variable": [
+								{
+									"key": "library",
+									"value": null
+								},
+								{
+									"key": "filename",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "download",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-token",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjkxMzk3MTQ4LCJqdGkiOiIwZGQ1MjA1MDRmZWI0YzVjYWExN2Q3ZTZlZjZhOTZjMyIsInVzZXJfaWQiOjF9.o6_2hJtbk_MqxwMalGFF79ouaoU3HEgKGvacU-gJ6v4",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/download/:library/:filename",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"download",
+										":library",
+										":filename"
+									],
+									"variable": [
+										{
+											"key": "library",
+											"value": "l1"
+										},
+										{
+											"key": "filename",
+											"value": "test.txt"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 07 Aug 2022 08:44:05 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								},
+								{
+									"key": "Content-Disposition",
+									"value": "attachment; filename=\"test.txt\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "4"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "Test"
+						}
+					]
+				},
+				{
+					"name": "all_contents",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": [
+						{
+							"name": "all_contents",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-token",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjkxMzk4NjE2LCJqdGkiOiJiYjBiMzQ4ZGFjYzg0MmM3OTcxZWY0ODY5ZjkwZjc4MCIsInVzZXJfaWQiOjF9.qy6S8oJ659BkvbcrpYIotoCDdOrOGr96Kgd54A5dK7w",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8000/api/content/all/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"content",
+										"all",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 07 Aug 2022 08:59:34 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "147"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"filename\": \"test.txt\",\n        \"member_id\": \"1\",\n        \"date_created\": \"1970-01-01T00:00:00Z\",\n        \"type\": \"other\",\n        \"library\": \"l1\",\n        \"file\": \"/contents/1_l1_test_test.txt\"\n    }\n]"
 						}
 					]
 				}
