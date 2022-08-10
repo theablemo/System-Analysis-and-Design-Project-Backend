@@ -8,4 +8,4 @@ def get_raw_file_name(file_name):
 
 
 def content_file_path(content, file_name):
-    return f'{CONTENTS_DIR}{content.member.id}_{random.randint(1, 999999)}_{file_name}'
+    return f'{CONTENTS_DIR}{content.id}{content.member.id}_{random.randint(1, 999999)}_{file_name}'
