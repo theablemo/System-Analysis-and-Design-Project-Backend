@@ -23,9 +23,16 @@ class ContentView(APIView):
 
     def get(self, request):
         id = request.data.get('id')
-        try:
-            content = Content.objects.get(id=id)
-        except Content.DoesNotExist:
-            return Response({'message': f'content with id={id} does not exist.', 'code': 'ERROR'}, status=401)
-        content_info = ContentInfoSerializer(content, context={'request': request}).data
-        return Response({'info': content_info, 'code': 'OK'})
+        all_content = request.data.get('all_content', False)
+
+        if all_content:
+            contents = Content.objects.filter(member=request.user)
+            contents_info = ContentInfoSerializer(contents, context={'request': request}, many=True).data
+            return Response({'info': contents_info, 'code': 'OK'})
+        else:
+            try:
+                content = Content.objects.get(id=id)
+            except Content.DoesNotExist:
+                return Response({'message': f'content with id={id} does not exist.', 'code': 'ERROR'}, status=401)
+            content_info = ContentInfoSerializer(content, context={'request': request}).data
+            return Response({'info': content_info, 'code': 'OK'})
