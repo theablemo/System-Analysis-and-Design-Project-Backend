@@ -1656,7 +1656,7 @@
 					]
 				},
 				{
-					"name": "grant permission",
+					"name": "grant permission content",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -1748,6 +1748,139 @@
 								{
 									"key": "Date",
 									"value": "Wed, 10 Aug 2022 12:11:56 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.5"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "13"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": \"OK\"\n}"
+						}
+					]
+				},
+				{
+					"name": "grant permission library",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjkxNjY2ODQzLCJqdGkiOiIyZGEzNzhkZTk2ZGY0YTY0YWI3NjI3YTljNmZiM2VmMCIsInVzZXJfaWQiOjN9.x2ET_XrxgWNL1xvixXhUM1iW7RBngHQUMDywY6fEe8E",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "amirrezaq@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "library_name",
+									"value": "lib1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/grant-permission-library/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"grant-permission-library",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "grant permission",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-token",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjkxNjY2ODQzLCJqdGkiOiIyZGEzNzhkZTk2ZGY0YTY0YWI3NjI3YTljNmZiM2VmMCIsInVzZXJfaWQiOjN9.x2ET_XrxgWNL1xvixXhUM1iW7RBngHQUMDywY6fEe8E",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "username",
+											"value": "amirrezaq@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "library_name",
+											"value": "lib1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/grant-permission-library/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"grant-permission-library",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 10 Aug 2022 13:12:46 GMT"
 								},
 								{
 									"key": "Server",
