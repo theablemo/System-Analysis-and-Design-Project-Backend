@@ -41,4 +41,4 @@ class Content(models.Model):
 
     @property
     def path(self):
-        return content_file_path(self, self.filename)
+        return self.file.name

@@ -15,25 +15,22 @@ class ContentModelTests(TestCase):
         self.member = Member(email='m@s.com')
         self.member.set_password('1234')
         self.member.save()
-        self.library = Library.objects.create(name='l1')
+        self.library = Library.objects.create(name='l1', type='text', member=self.member)
         self.content_type = ContentType.objects.create(name='text')
         self.filename = 'test.txt'
         self.file = SimpleUploadedFile(self.filename, b'Sample Content.')
 
     def test_content_creation(self):
         Content.objects.create(
-            filename=self.filename,
             member=self.member,
             type=self.content_type,
             file=self.file,
             library=self.library
         )
-        content_count = Content.objects.filter(filename=self.filename).count()
+        content_count = Content.objects.all().count()
         self.assertEqual(content_count, 1)
-        content = Content.objects.get(filename=self.filename)
+        content = Content.objects.get(id=1)
         self.assertEqual(content.library.name, self.library.name)
-        self.assertEqual(content.path, f'{CONTENTS_DIR}{self.member.id}_{self.library.name}_'
-                                       f'{self.filename.split(".")[0]}_{self.filename}')
 
     def tearDown(self):
         path = CONTENTS_DIR
@@ -44,61 +41,55 @@ class ContentModelTests(TestCase):
 
 class ContentViewTest(TestCase):
     def setUp(self, er=None) -> None:
-        self.library = Library.objects.create(name='l1')
-        self.content_type = ContentType.objects.create(name='text')
-        self.filename = 'test.txt'
-        self.file = SimpleUploadedFile(self.filename, b'Sample Content.')
         self.member = Member(username='m@s.com')
         self.member.set_password('1234')
         self.member.save()
         resp = self.client.post('/api/login', {'username': 'm@s.com', 'password': '1234'}).json()
         self.token = resp['token']['token']
 
+        self.library = Library.objects.create(name='l1', type='text', member=self.member)
+        self.content_type = ContentType.objects.create(name='txt', type='text')
+        self.filename = 'test.txt'
+        self.file = SimpleUploadedFile(self.filename, b'Sample Content.')
+
     def test_upload_view_successful(self):
         data = {
-            'library': self.library.name,
-            'type': self.content_type.name,
+            'library': self.library.pk,
             'file': self.file,
         }
-        response = self.client.post('/api/content/new/', data=data, HTTP_X_TOKEN=self.token)
+        response = self.client.post('/api/content/', data=data, HTTP_X_TOKEN=self.token)
         self.assertEqual(response.status_code, 200)
-        content_count = Content.objects.filter(filename=self.filename).count()
+        content_count = Content.objects.all().count()
         self.assertEqual(content_count, 1)
+        content = Content.objects.all().last()
+        self.assertEqual(content.type.name, self.content_type.name)
 
-    def test_upload_view_duplicate_content(self):
-        Content.objects.create(
-            member=self.member,
-            library=self.library,
-            type=self.content_type,
-            file=self.file,
-            filename=self.filename
-        )
+    def test_upload_view_wrong_library(self):
+        another_library = Library.objects.create(name='l2', type='video', member=self.member)
         data = {
-            'library': self.library.name,
-            'type': self.content_type.name,
-            'file': SimpleUploadedFile(self.filename, b'Sample Content.'),
+            'library': another_library.id,
+            'file': self.file,
         }
-        response = self.client.post('/api/content/new/', data=data, HTTP_X_TOKEN=self.token)
+        response = self.client.post('/api/content/', data=data, HTTP_X_TOKEN=self.token)
         self.assertEqual(response.status_code, 400)
         self.assertIn('message', response.json())
-        self.assertEqual(response.json()['message'][0], 'Content already exists.')
+        self.assertEqual(response.json()['message'][0], 'Content and library must be of the same type.')
 
     def test_download_view_successful(self):
-        Content.objects.create(
+        content = Content.objects.create(
             member=self.member,
             library=self.library,
             type=self.content_type,
             file=self.file,
-            filename=self.filename
         )
-        response = self.client.get(f'/api/download/{self.library.name}/{self.filename}/', HTTP_X_TOKEN=self.token)
+        response = self.client.get(f'/api/download/{content.path.split("/")[-1]}', HTTP_X_TOKEN=self.token)
         self.assertEqual(response.status_code, 200)
         self.assertIn('Content-Type', response.headers)
         self.assertEqual(response.headers['Content-Type'], 'text/plain')
 
     def test_download_view_content_not_found(self):
         Content.objects.all().delete()
-        response = self.client.get(f'/api/download/{self.library.name}/{self.filename}/', HTTP_X_TOKEN=self.token)
+        response = self.client.get(f'/api/download/test.txt/', HTTP_X_TOKEN=self.token)
         self.assertEqual(response.status_code, 404)
 
     def tearDown(self):
@@ -111,13 +102,14 @@ class ContentViewTest(TestCase):
 
 class ContentListViewTest(TestCase):
     def setUp(self) -> None:
-        self.library = Library.objects.create(name='l1')
-        self.content_type = ContentType.objects.create(name='text')
         self.member = Member(username='m@s.com')
         self.member.set_password('1234')
         self.member.save()
         resp = self.client.post('/api/login', {'username': 'm@s.com', 'password': '1234'}).json()
         self.token = resp['token']['token']
+
+        self.library = Library.objects.create(name='l1', type='text', member=self.member)
+        self.content_type = ContentType.objects.create(name='text')
 
         self.filename1 = 'test1.txt'
         self.file1 = SimpleUploadedFile(self.filename1, b'Sample Content1.')
@@ -126,22 +118,11 @@ class ContentListViewTest(TestCase):
         self.filename3 = 'test3.txt'
         self.file3 = SimpleUploadedFile(self.filename3, b'Sample Content3.')
         Content.objects.bulk_create([
-            Content(member=self.member, library=self.library, file=self.file1,
-                    filename=self.filename1, type=self.content_type),
-            Content(member=self.member, library=self.library, file=self.file2,
-                    filename=self.filename2, type=self.content_type),
-            Content(member=self.member, library=self.library, file=self.file3,
-                    filename=self.filename3, type=self.content_type), ]
-
+            Content(member=self.member, library=self.library, file=self.file1, ),
+            Content(member=self.member, library=self.library, file=self.file2, ),
+            Content(member=self.member, library=self.library, file=self.file3, ),
+        ]
         )
-
-    def test_get_all_contents(self):
-        response = self.client.get('/api/content/all/', HTTP_X_TOKEN=self.token)
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(len(response.json()), 3)
-        for item in response.json():
-            self.assertEqual(self.member.id, int(item.get('member_id')))
-            self.assertEqual(self.library.name, item.get('library'))
 
     def tearDown(self):
         Content.objects.all().delete()
