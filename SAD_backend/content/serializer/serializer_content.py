@@ -7,7 +7,7 @@ from content.models.content import ContentType, Content, Library
 class ContentSerializer(ModelSerializer):
     class Meta:
         model = Content
-        fields = ['file', 'father_content', 'library']
+        fields = ['file', 'father_content', 'library', 'info']
 
     def validate(self, data):
         super(ContentSerializer, self).validate(data)

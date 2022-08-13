@@ -92,6 +92,32 @@ class ContentViewTest(TestCase):
         response = self.client.get(f'/api/download/test.txt/', HTTP_X_TOKEN=self.token)
         self.assertEqual(response.status_code, 404)
 
+    def test_add_info_to_content(self):
+        content = Content.objects.create(
+            member=self.member,
+            library=self.library,
+            type=self.content_type,
+            file=self.file,
+        )
+        import json
+        data = {
+            'id': content.id,
+            'info': {
+                "author": "James",
+                "description": "Test"
+            }
+        }
+        response = self.client.put('/api/add-info-to-content/',
+                                   data=json.dumps(data),
+                                   content_type='application/json',
+                                   HTTP_X_TOKEN=self.token)
+        self.assertEqual(response.status_code, 200)
+        content = Content.objects.get(id=content.id)
+        import json
+        info = json.loads(content.info)
+        self.assertEqual(info['author'], 'James')
+        self.assertEqual(info['description'], 'Test')
+
     def tearDown(self):
         Content.objects.all().delete()
         path = CONTENTS_DIR

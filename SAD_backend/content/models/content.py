@@ -38,6 +38,7 @@ class Content(models.Model):
     library = models.ForeignKey(Library, null=True, on_delete=models.CASCADE)
     file = models.FileField(upload_to=content_file_path)
     father_content = models.ForeignKey('self', null=True, on_delete=models.CASCADE)
+    info = models.CharField(max_length=2000, default='{}')
 
     @property
     def path(self):
