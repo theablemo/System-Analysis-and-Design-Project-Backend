@@ -23,6 +23,7 @@ class Library(models.Model):
     name = models.CharField(max_length=50)
     date_created = models.DateTimeField(verbose_name='date_created', default=datetime.fromtimestamp(0, tz=pytz.UTC))
     member = models.ForeignKey(Member, on_delete=models.CASCADE)
+    type = models.CharField(max_length=30, default=ContentType.get_default_type_pk)
 
     class Meta:
         unique_together = ('name', 'member',)
@@ -37,7 +38,8 @@ class Content(models.Model):
     library = models.ForeignKey(Library, null=True, on_delete=models.CASCADE)
     file = models.FileField(upload_to=content_file_path)
     father_content = models.ForeignKey('self', null=True, on_delete=models.CASCADE)
+    info = models.CharField(max_length=2000, default='{}')
 
     @property
     def path(self):
-        return content_file_path(self, self.filename)
+        return self.file.name
