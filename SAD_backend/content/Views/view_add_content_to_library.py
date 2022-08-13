@@ -17,6 +17,9 @@ class AddContentToLibraryView(APIView):
             if content.member != request.user:
                 return Response({'message': f'you can only edit your own content.', 'code': 'ERROR'},
                                 status=401)
+            if content.type.type != library.type:
+                return Response({'message': f'Content and library types must be the same.', 'code': 'ERROR'},
+                                status=401)
         except Library.DoesNotExist:
             return Response({'message': f'library with name={library_name} does not exist.', 'code': 'ERROR'},
                             status=401)
