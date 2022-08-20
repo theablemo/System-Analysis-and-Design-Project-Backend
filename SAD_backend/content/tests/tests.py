@@ -1,3 +1,4 @@
+import json
 import os
 
 from django.core.files.uploadedfile import SimpleUploadedFile
@@ -149,6 +150,61 @@ class ContentListViewTest(TestCase):
             Content(member=self.member, library=self.library, file=self.file3, ),
         ]
         )
+
+    def tearDown(self):
+        Content.objects.all().delete()
+        path = CONTENTS_DIR
+        for file_name in os.listdir(path):
+            file = path + file_name
+            os.remove(file)
+
+
+class LibraryUpdateViewTest(TestCase):
+    def setUp(self) -> None:
+        self.member = Member(username='m@s.com')
+        self.member.set_password('1234')
+        self.member.save()
+        resp = self.client.post('/api/login', {'username': 'm@s.com', 'password': '1234'}).json()
+        self.token = resp['token']['token']
+
+        self.library = Library.objects.create(name='l1', type='text', member=self.member)
+        self.content_type = ContentType.objects.create(type='text')
+        ContentType.objects.create(type='video')
+
+    def test_update_name(self):
+        data = {'id': self.library.id, 'name': 'library1'}
+        response = self.client.put('/api/library/', data=json.dumps(data), HTTP_X_TOKEN=self.token,
+                                   content_type='application/json')
+        self.assertEqual(response.status_code, 200)
+        updated = Library.objects.get(id=self.library.id)
+        self.assertEqual(updated.name, 'library1')
+
+    def test_update_type_when_lib_is_empty(self):
+        data = {'id': self.library.id, 'type': 'video'}
+        response = self.client.put('/api/library/', data=json.dumps(data), HTTP_X_TOKEN=self.token,
+                                   content_type='application/json')
+        self.assertEqual(response.status_code, 200)
+        updated = Library.objects.get(id=self.library.id)
+        self.assertEqual(updated.type, 'video')
+
+    def test_update_type_when_lib_is_not_empty(self):
+        Content.objects.create(
+            member=self.member,
+            library=self.library,
+            type=self.content_type,
+            file=SimpleUploadedFile('test.txt', b'Sample Content.'),
+        )
+        data = {'id': self.library.id, 'type': 'video'}
+        response = self.client.put('/api/library/', data=json.dumps(data), HTTP_X_TOKEN=self.token,
+                                   content_type='application/json')
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.json()['code'], 'ERROR')
+
+    def test_update_lib_not_found(self):
+        data = {'id': self.library.id + 1, 'name': 'new_library'}
+        response = self.client.put('/api/library/', data=json.dumps(data), HTTP_X_TOKEN=self.token,
+                                   content_type='application/json')
+        self.assertEqual(response.status_code, 404)
 
     def tearDown(self):
         Content.objects.all().delete()
