@@ -1,7 +1,7 @@
 from django.urls import path
 from content.views import ContentView, LibraryView, AddContentToLibraryView, GetLibraryFiles, DownloadView, \
     GrantPermission, GetSharedFiles, GrantPermissionLibrary
-from content.Views.view_add_info_to_content import AddInfoToContentView
+from content.views.view_add_info_to_content import AddInfoToContentView
 
 urlpatterns = [
     path('content/', ContentView.as_view(), name="view content"),
