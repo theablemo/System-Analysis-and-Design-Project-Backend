@@ -15,3 +15,14 @@ class GetUserInfoView(APIView):
         return Response({
             "info": member_info,
             "code": "OK"})
+
+    def put(self, request):
+        serializer = MemberInfoSerializer(data=request.data,
+                                       instance=request.user,
+                                       partial=True)
+
+        if serializer.is_valid(raise_exception=True):
+            new_user = serializer.save()
+            content_info = MemberInfoSerializer(new_user, context={'request': request}).data
+            return Response({'info': content_info, 'code': 'Ok'}, status=200)
+        return Response({'info': 'Operation failed.', 'code': 'ERROR'}, status=400)

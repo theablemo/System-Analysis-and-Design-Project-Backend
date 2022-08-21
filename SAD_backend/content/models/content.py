@@ -30,6 +30,7 @@ class Library(models.Model):
 
 
 class Content(models.Model):
+    name = models.CharField(max_length=150, blank=True)
     member = models.ForeignKey(Member, on_delete=models.CASCADE)
     date_created = models.DateTimeField(verbose_name='date_created', default=datetime.fromtimestamp(0, tz=pytz.UTC))
     type = models.ForeignKey(ContentType,

@@ -35,3 +35,18 @@ class ContentView(APIView):
                 return Response({'message': f'content with id={id} does not exist.', 'code': 'ERROR'}, status=401)
             content_info = ContentInfoSerializer(content, context={'request': request}).data
             return Response({'info': content_info, 'code': 'OK'})
+
+    def put(self, request):
+        try:
+            content = Content.objects.get(id=request.data.get('id'))
+        except Content.DoesNotExist:
+            return Response({'info': 'Content not found.', 'code': 'ERROR'}, status=404)
+
+        serializer = ContentSerializer(data=request.data,
+                                       instance=content,
+                                       partial=True)
+        if serializer.is_valid(raise_exception=True):
+            new_content = serializer.save()
+            content_info = ContentInfoSerializer(new_content, context={'request': request}).data
+            return Response({'info': content_info, 'code': 'Ok'}, status=200)
+        return Response({'info': 'Operation failed.', 'code': 'ERROR'}, status=400)
