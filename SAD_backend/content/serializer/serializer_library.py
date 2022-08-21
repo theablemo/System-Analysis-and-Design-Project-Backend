@@ -9,9 +9,10 @@ class LibrarySerializer(serializers.ModelSerializer):
 
     def validate(self, data):
         super(LibrarySerializer, self).validate(data)
-        if not ContentType.objects.filter(type=data['type']).exists():
-            raise serializers.ValidationError(detail={"message": "Content type not found"},
-                                              code=status.HTTP_404_NOT_FOUND)
+        if 'type' in data:
+            if not ContentType.objects.filter(type=data['type']).exists():
+                raise serializers.ValidationError(detail={"message": "Content type not found"},
+                                                  code=status.HTTP_404_NOT_FOUND)
         return data
 
     def create(self, validated_data):
@@ -21,3 +22,9 @@ class LibrarySerializer(serializers.ModelSerializer):
             type=validated_data['type'],
         )
         return library
+
+    def update(self, instance, validated_data):
+        instance.name = validated_data.get('name', instance.name)
+        instance.type = validated_data.get('type', instance.type)
+        instance.save()
+        return instance
