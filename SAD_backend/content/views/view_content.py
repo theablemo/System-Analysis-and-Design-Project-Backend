@@ -38,9 +38,9 @@ class ContentView(APIView):
 
     def put(self, request):
         try:
-            content = Content.objects.get(id=request.data.get('id'))
+            content = Content.objects.get(id=request.data.get('id'), member=request.user)
         except Content.DoesNotExist:
-            return Response({'info': 'Content not found.', 'code': 'ERROR'}, status=404)
+            return Response({'info': 'Content not found or is not owned by you.', 'code': 'ERROR'}, status=404)
 
         serializer = ContentSerializer(data=request.data,
                                        instance=content,
@@ -55,7 +55,7 @@ class ContentView(APIView):
         try:
             content = Content.objects.get(id=request.GET.get('id'), member=request.user)
         except Content.DoesNotExist:
-            return Response({'info': 'Content not found.', 'code': 'ERROR'}, status=404)
+            return Response({'info': 'Content not found or is not owned by you.', 'code': 'ERROR'}, status=404)
 
         Content.objects.filter(father_content=content).delete()
         content.delete()

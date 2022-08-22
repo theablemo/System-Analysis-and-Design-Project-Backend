@@ -12,7 +12,7 @@ class EditInfoContentView(APIView):
     def put(self, request):
         content_id = request.data.get('id')
         try:
-            content = Content.objects.get(id=content_id)
+            content = Content.objects.get(id=content_id, member=request.user)
             info = json.loads(content.info)
             for key, value in json.loads(request.data.get('info')).items():
                 info[key] = value
@@ -21,15 +21,15 @@ class EditInfoContentView(APIView):
             return Response({'message': f'Content updated successfully.', 'code': 'OK'},
                             status=200)
         except Content.DoesNotExist:
-            return Response({'message': f'Content with id {content_id} not found.', 'code': 'ERROR'},
+            return Response({'message': f'Content with id {content_id} not found or is not owned by you.', 'code': 'ERROR'},
                             status=404)
 
     def delete(self, request):
         content_id = request.GET.get('id')
         try:
-            content = Content.objects.get(id=content_id)
+            content = Content.objects.get(id=content_id, member=request.uset)
         except Content.DoesNotExist:
-            return Response({'message': f'Content with id {content_id} not found.', 'code': 'ERROR'},
+            return Response({'message': f'Content with id {content_id} not found or is not owned by you.', 'code': 'ERROR'},
                             status=404)
         info = json.loads(content.info)
         for key in request.GET:
