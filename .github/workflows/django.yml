@@ -40,4 +40,4 @@ jobs:
         port: 22
         script: cd /d M:/Programming/python/SAD/SAD_Project_Back/pipeline &
           server_off &
-          pull
+          pull_then_start
