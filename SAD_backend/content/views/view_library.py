@@ -43,3 +43,12 @@ class LibraryView(APIView, LimitOffsetPagination):
             library_info = LibraryInfoSerializer(new_library, context={'request': request}).data
             return Response({'info': library_info, 'code': 'Ok'}, status=200)
         return Response({'info': 'Operation failed.', 'code': 'ERROR'}, status=400)
+
+    def delete(self, request):
+        try:
+            library = Library.objects.get(id=request.GET.get('id'), member=request.user)
+        except Library.DoesNotExist:
+            return Response({'info': 'Library not found.', 'code': 'ERROR'}, status=404)
+
+        library.delete()
+        return Response({'code': 'Ok'}, status=200)
