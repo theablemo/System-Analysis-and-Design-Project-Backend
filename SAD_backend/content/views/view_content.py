@@ -50,3 +50,13 @@ class ContentView(APIView):
             content_info = ContentInfoSerializer(new_content, context={'request': request}).data
             return Response({'info': content_info, 'code': 'Ok'}, status=200)
         return Response({'info': 'Operation failed.', 'code': 'ERROR'}, status=400)
+
+    def delete(self, request):
+        try:
+            content = Content.objects.get(id=request.GET.get('id'), member=request.user)
+        except Content.DoesNotExist:
+            return Response({'info': 'Content not found.', 'code': 'ERROR'}, status=404)
+
+        Content.objects.filter(father_content=content).delete()
+        content.delete()
+        return Response({'code': 'Ok'}, status=200)
