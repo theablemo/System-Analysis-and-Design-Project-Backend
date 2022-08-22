@@ -16,5 +16,5 @@ class ContentInfoSerializer(ModelSerializer):
         data['type_category'] = ContentType.objects.get(id=data['type']).type
         data['has_attachment'] = Content.objects.filter(father_content=instance.id).exists()
         data['info'] = json.loads(instance.info)
-        data['file_size'] = instance.file.size
+        data['file_size'] =  instance.file.size
         return data
