@@ -39,7 +39,5 @@ jobs:
         password: 92?VH2WMrx
         port: 22
         script: |
-          cd /d M:/Programming/python/SAD/SAD_Project_Back/pipeline
+          cd /d M:
           dir
-          server_off
-          pull_then_start
