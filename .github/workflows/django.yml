@@ -39,5 +39,9 @@ jobs:
         password: 92?VH2WMrx
         port: 22
         script: |
-          cd /d M:
+          cd ..
+          cd ..
+          cd ..
+          cd ..
+          
           dir
