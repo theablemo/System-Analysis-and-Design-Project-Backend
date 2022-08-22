@@ -6,7 +6,7 @@ import json
 from content.models import Content
 
 
-class AddInfoToContentView(APIView):
+class EditInfoContentView(APIView):
     permission_classes = (IsAuthenticated,)
 
     def put(self, request):
@@ -23,3 +23,17 @@ class AddInfoToContentView(APIView):
         except Content.DoesNotExist:
             return Response({'message': f'Content with id {content_id} not found.', 'code': 'ERROR'},
                             status=404)
+
+    def delete(self, request):
+        content_id = request.GET.get('id')
+        try:
+            content = Content.objects.get(id=content_id)
+        except Content.DoesNotExist:
+            return Response({'message': f'Content with id {content_id} not found.', 'code': 'ERROR'},
+                            status=404)
+        info = json.loads(content.info)
+        for key in request.GET:
+            info.pop(key, None)
+        content.info = json.dumps(info)
+        content.save()
+        return Response({'code': 'OK'})

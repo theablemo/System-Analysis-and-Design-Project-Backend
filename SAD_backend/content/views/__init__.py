@@ -7,4 +7,4 @@ from .view_download import DownloadView
 from .view_grant_permission import GrantPermission
 from .view_get_shared_files import GetSharedFiles
 from .view_grant_permission_library import GrantPermissionLibrary
-from .view_add_info_to_content import AddInfoToContentView
+from .view_edit_info_content import EditInfoContentView
