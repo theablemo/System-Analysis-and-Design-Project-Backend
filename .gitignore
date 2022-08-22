@@ -31,7 +31,10 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+pipeline/
 env/
+sad_venv/
+contents/
 build/
 develop-eggs/
 dist/
