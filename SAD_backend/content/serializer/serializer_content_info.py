@@ -12,4 +12,5 @@ class ContentInfoSerializer(ModelSerializer):
         data = super(ContentInfoSerializer, self).to_representation(instance)
         data['file_download_name'] = data['file'].split('/')[-1]
         data['type_category'] = ContentType.objects.get(id=data['type']).type
+        data['has_attachment'] = Content.objects.filter(father_content=instance.id).exists()
         return data
