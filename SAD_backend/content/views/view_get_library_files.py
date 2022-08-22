@@ -9,7 +9,7 @@ class GetLibraryFiles(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        library_name = request.data.get('library_name')
+        library_name = request.GET.get('library_name')
 
         try:
             library = Library.objects.get(name=library_name, member=request.user)

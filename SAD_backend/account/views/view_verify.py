@@ -41,7 +41,7 @@ class VerifyView(APIView):
                 "code": "ERROR"}, status=400)
 
     def get(self, request):
-        username = request.data.get('username', None)
+        username = request.GET.get('username', None)
         if not username or not Member.objects.filter(username=username).exists():
             return Response(status=404, data={"message": "user not found"})
         send_register_email(username)
