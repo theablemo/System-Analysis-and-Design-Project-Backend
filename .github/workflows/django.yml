@@ -38,8 +38,7 @@ jobs:
         username: "alireza eiji"
         password: 92?VH2WMrx
         port: 22
-        script: 
-        "
+        script: "
         cd /d M:/Programming/python/SAD/SAD_Project_Back/pipeline
         dir
         "
