@@ -21,8 +21,8 @@ class ContentView(APIView):
         return Response({'info': content_info, 'code': 'OK'})
 
     def get(self, request):
-        id = request.data.get('id')
-        all_content = request.data.get('all_content', False)
+        id = request.GET.get('id')
+        all_content = request.GET.get('all_content', False)
 
         if all_content:
             contents = Content.objects.filter(member=request.user)
