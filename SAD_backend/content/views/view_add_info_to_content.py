@@ -14,7 +14,7 @@ class AddInfoToContentView(APIView):
         try:
             content = Content.objects.get(id=content_id)
             info = json.loads(content.info)
-            for key, value in request.data.get('info').items():
+            for key, value in json.loads(request.data.get('info')).items():
                 info[key] = value
             content.info = json.dumps(info)
             content.save()
