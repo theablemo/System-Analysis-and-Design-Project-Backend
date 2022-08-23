@@ -14,4 +14,4 @@ This app is made to make managing your files easy and delighful, with a modern a
 
 The back-end application is programmed with Django framework. You can view the code in this repository.
 
-The front-end application is made by the Flutter framework. You can view the front-end application [here](https://github.com/MohammadAli-Khodabandelou/system_analysis_and_design_ui)
+The front-end application is made by the Flutter framework. You can view the front-end application [here](https://github.com/MohammadAli-Khodabandelou/system_analysis_and_design_ui).
