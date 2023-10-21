@@ -1,17 +1,26 @@
-# System Analysis and Design Project Back-End
+System Analysis and Design Final Project Backend
+========================================
 
-This repo is the front-end part of the file management project for the SAD course instructed by Dr.Mehdi Mostafazade at Sharif University of Technology.
+This repo is the backend part of the file management project for the SAD course instructed by Dr. Mehdi Mostafazade at the Sharif University of Technology. The frontend code can be found [here](https://github.com/theablemo/System-Analysis-and-Design-Project-Frontend).
 
-**Summer 2022**
+# Collborators
 
-----
-## More About This Project
+- [Mohammad Abolnejadian](https://github.com/theablemo)
+- [Mohammadali Khodabandelou](https://github.com/amirrezamirzaei)
+- [Amirreza Mirzaei](https://github.com/MohammadAli-Khodabandelou)
+- [Alireza Eiji](https://github.com/AlirezaEiji191379)
+- [Matin Daghyani](https://github.com/mtndaghyani)
 
-This project is an Android-first application which can be used as a file sharing platform. Easily upload your files to your account and download them anywhere using your personal account.
-This app is made to make managing your files easy and delighful, with a modern and colorful design.
+# Introduction to the platform
 
-## Technologies Used for This Project
+This project is an Android-first application that can be used as a file-sharing platform. Easily upload your files to your account and download them anywhere using your personal account. This app is made to make managing your files easy and delightful, with a modern and colorful design.
 
-The back-end application is programmed with Django framework. You can view the code in this repository.
+# Setup
 
-The front-end application is made by the Flutter framework. You can view the front-end application [here](https://github.com/MohammadAli-Khodabandelou/system_analysis_and_design_ui).
+1. Create Postgres database AE_Back  
+2. open directory `SAD_Project_Back/SAD_backend`    
+3. run redis with `redis-server`    
+4. run  celery with `celery -A backend worker -l INFO`    
+5. run `python3 manage.py migrate`   
+6. run  `python3 manage.py loaddata Content-type.json`  
+7. run `python3 manage.py runserver`
